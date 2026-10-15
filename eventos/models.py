@@ -7,6 +7,10 @@ class Local(models.Model):
     nome = models.CharField(max_length=100)
     endereco = models.CharField(max_length=200)
     capacidade = models.IntegerField()
+    
+    class Meta:
+        verbose_name_plural = "Locais"
+        ordering = ['nome']
 
     def __str__(self):
         return self.nome
@@ -57,6 +61,9 @@ class Inscricao(models.Model):
     email = models.EmailField()
     inscrito_em = models.DateTimeField(auto_now_add=True)
     evento = models.ForeignKey(Evento, on_delete=models.CASCADE, related_name='inscricoes')
+    
+    class Meta:
+        verbose_name_plural = "Inscrições"
     
     def __str__(self):
         return self.nome
