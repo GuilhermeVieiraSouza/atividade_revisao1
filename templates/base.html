@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Meu Site{% endblock %}</title>
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body
+    style="background-color: #666; flex-direction: column; min-height: 100vh; display: flex; justify-content: space-between;">
+    {% block header %}
+    <header>
+        <h1>Bem-vindo ao Meu Site</h1>
+    </header>
+    {% endblock %}
+    {% block content %}
+    {% endblock %}
+    {% block footer %}
+    <footer>
+        <p>&copy; 2026 Meu Site. Todos os direitos reservados.</p>
+    </footer>
+    {% endblock %}
+</body>
+
+</html>

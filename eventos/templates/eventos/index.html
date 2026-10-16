@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Eventos{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'eventos/css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<input type="text" id="searchInput" placeholder="Pesquisar eventos..."
+    style="margin-bottom: 10px; padding: 5px; width: 100%;">
+<section >
+    {% for evento in eventos %}
+    <div
+        style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; background-color: #55af55; color: white; border-radius: 1rem; ">
+        <h2>{{ evento.titulo }}</h2>
+        <p>Data: {{ evento.inicio }}</p>
+        <p>Local: {{ evento.local.nome }}</p>
+        <a href="{% url 'detalhe' evento.id %}">Detalhes</a>
+    </div>
+    {% endfor %}
+</section>
+
+{% endblock %}

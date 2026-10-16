@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Local: {{ local.nome }}{% endblock %}
+
+{% block content %}
+<h1>Local: {{ local.nome }}</h1>
+<p>Capacidade: {{ local.capacidade }}</p>
+
+<h2>Eventos neste local:</h2>
+<section style=" padding: 20px; display: flex; justify-content: start; gap:1rem; align-items: center;">
+    {% for evento in eventos %}
+    <div
+        style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; background-color: #55af55; color: white; border-radius: 1rem; ">
+        <h2>{{ evento.titulo }}</h2>
+        <p>Data: {{ evento.inicio }}</p>
+        <p>Local: {{ evento.local.nome }}</p>
+        <a href="{% url 'detalhe' evento.id %}">Detalhes</a>
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}

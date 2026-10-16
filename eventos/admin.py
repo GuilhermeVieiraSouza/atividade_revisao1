@@ -11,13 +11,23 @@ class LocalAdmin(admin.ModelAdmin):
     
 admin.site.register(Categoria)
 
+class atividadeInline(admin.TabularInline):
+    model = Atividade
+    extra = 1
+
+class relatorioInline(admin.TabularInline):
+    model = Relatorio
+    extra = 1
+    
 @admin.register(Evento)
 class EventoAdmin(admin.ModelAdmin):
     list_display = ('titulo', 'inicio', 'local',)
     list_filter = ('local', 'categoria')
-    search_fields = ('titulo', 'descricao')
-    filter_horizontal = ('categoria', )
+    search_fields = ('titulo',)
+    filter_horizontal = ('categoria',)
+    inlines = [atividadeInline, relatorioInline]
     autocomplete_fields = ['local', ]
+
 
 admin.site.register(Atividade)
 admin.site.register(Inscricao)

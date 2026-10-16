@@ -1,0 +1,7 @@
+section {
+    padding: 20px;
+    display: flex;
+    justify-content: start;
+    gap: 1rem;
+    align-items: center;
+}

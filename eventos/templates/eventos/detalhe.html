@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalhe do Evento{% endblock %}
+
+{% block content %}
+    <div
+        style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; background-color: #55af55; color: white; border-radius: 1rem; ">
+        <h2>{{ evento.titulo }}</h2>
+        <p>Data: {{ evento.inicio }}</p>
+        <a href="{% url 'local' evento.local.id %}" style="color: white; text-decoration: none;">Local: {{ evento.local.nome }}</a>
+    </div>
+
+    <section style=" color: white; padding: 20px; ">
+
+        <h3>Atividades do Evento</h3>
+        {% for atividade in atividades %}
+        <div
+            style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; background-color: #55af55; color: white; border-radius: 1rem; ">
+            <h2>{{ atividade.titulo }}</h2>
+            <p>Data: {{ atividade.palestrante }}</p>
+            <p>Local: {{ atividade.horario }}</p>
+        </div>
+        {% endfor %}
+
+        <h3>Relatório do Evento</h3>
+        {% if relatorio %}
+        <div
+            style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; background-color: #55af55; color: white; border-radius: 1rem; ">
+            <p>{{ relatorio.presentes }}</p>
+        </div>
+        {% else %}
+        <p>Nenhum relatório disponível para este evento.</p>
+        {% endif %}
+    </section>
+
+{% endblock %}
